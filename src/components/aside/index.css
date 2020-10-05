@@ -1,0 +1,16 @@
+.aside{
+    background:rgb(68, 68, 68);
+    height:100%;
+    color:#fff;
+    padding:30px;
+}
+.aside li{
+    margin:10px 0;
+}
+.aside a:hover{
+    color:rgb(247, 245, 127);
+}
+
+.active{
+    color:rgb(247, 245, 127);
+}
