@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './index.css'
-import { Row, Col, Typography, Button } from 'antd';
+import { Row, Col, Typography, Button, Icon } from 'antd';
 const { Title } = Typography;
 import { LogoutOutlined } from '@ant-design/icons'
 
@@ -14,10 +14,14 @@ export default function index(props) {
                 <span>欢迎你</span>
                 <span>{props.loginId}</span>
                 <Button
+                    size='small'
                     onClick={() => {
                         props.onLogout && props.onLogout();
                     }}
-                    className={style.close} shape="circle" icon={<LogoutOutlined />}></Button>
+                    className={style.close}
+                    shape="circle"
+                    icon={<LogoutOutlined />}
+                ></Button>
             </Col>
         </Row>
     )

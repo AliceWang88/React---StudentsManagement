@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Input, Radio,Row, Col } from 'antd'
+import { Input, Radio, Row, Col } from 'antd'
 import { Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import style from './index.css'
@@ -28,34 +28,32 @@ export default class StudentSearchBar extends Component {
         return (
             <div className={style.wrap}>
                 <Row align='middle'>
-
-                    关键字：
                     <Col style={{ marginRight: 20 }}>
                         <Input
-                            bordered={false}
-                            style={{border:'1px solid #ccc',background:'#fff'}}
                             allowClear
+                            addonBefore="关键字："
                             value={this.state.key}
                             onChange={e => {
                                 this.setState({
                                     key: e.target.value
                                 })
                             }}
+                            suffix={<SearchOutlined />}
+                            onPressEnter={e=>{this.props.onSearch && this.props.onSearch(this.state);}}
                         ></Input>
                     </Col>
 
                  性别：
                  <Radio.Group defaultValue='-1' onChange={this.handleRadioChange}>
-                        <Radio value='-1' checked={this.state.sex === -1}>不限</Radio>
-                        <Radio value='0' checked={this.state.sex === 0}>男</Radio>
-                        <Radio value='1' checked={this.state.sex === 1}>女</Radio>
+                        <Radio.Button value='-1' checked={this.state.sex === -1}>不限</Radio.Button>
+                        <Radio.Button value='0' checked={this.state.sex === 0}>男</Radio.Button>
+                        <Radio.Button value='1' checked={this.state.sex === 1}>女</Radio.Button>
                     </Radio.Group>
                     <Button
-                    type="primary"
-                    icon={<SearchOutlined />}
-                     onClick={() => {
-                        this.props.onSearch && this.props.onSearch(this.state);
-                    }}>查询</Button
+                        type="primary"
+                        onClick={() => {
+                            this.props.onSearch && this.props.onSearch(this.state);
+                        }}>查询</Button
                     >
                 </Row>
             </div>

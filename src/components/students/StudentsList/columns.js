@@ -1,4 +1,5 @@
 import { Link } from 'umi';
+import { Button} from 'antd';
 
 export const columns = [
     {
@@ -6,12 +7,14 @@ export const columns = [
         dataIndex: 'sNo',
         key: 'sNo',
         align: 'center',
+        fixed:true,
     },
     {
         title: 'Name',
         dataIndex: 'name',
         key: 'name',
         align: 'center',
+        fixed:true,
     },
     {
         title: 'Sex',
@@ -19,6 +22,7 @@ export const columns = [
         key: 'sex',
         render: text => text === 0 ? '男' : '女',
         align: 'center',
+        fixed:true,
     },
     {
         title: '年龄',
@@ -34,18 +38,21 @@ export const columns = [
         ],
         filterMultiple: false,
         onFilter: (value, record) => (new Date().getFullYear()-(+record.birth)) >= value,
+        fixed:true,
     },
     {
         title: 'Email',
         dataIndex: 'email',
         key: 'email',
         align: 'center',
+        fixed:true,
     },
     {
         title: 'Phone',
         dataIndex: 'phone',
         key: 'phone',
         align: 'center',
+        fixed:true,
 
     },
     {
@@ -53,13 +60,14 @@ export const columns = [
         dataIndex: 'address',
         key: 'address',
         align: 'center',
-
+        fixed:true,
     },
     {
         title: 'Detail',
         dataIndex: 'sNo',
         key: 'detail',
-        render: (text, record, index) => <Link to={`/students/${text}`} target='__blank'>详情</Link>,
+        render: (text, record, index) => <Button type="link" size="small" href={`/students/${text}`} target='__blank'>详情</Button>,
         align: 'center',
+        fixed:true,
     },
 ]
