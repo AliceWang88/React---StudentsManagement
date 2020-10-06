@@ -5,22 +5,37 @@ import React from 'react'
 
 export default function index() {
 
+    const [form] = Form.useForm();
+    console.log(form)
+
+    const validateMessages = {
+        required: '${name} is required!',
+        types: {
+          email: '${name} is not validate email!',   //  输入时，不符合要求时，提醒
+          radio: '!!!!!!!!!!!!!!',
+          number:'88888888888888'
+        },
+   };
 
 
     return (
         <div className={style.wrap}>
             <Form
-                name='form'
+                form={form}
+                name='form-wrap'
                 initialValues={{
-                    sex: 0
-                }}
+                    sex: 0,
+                    isMonitor:false,
+                    name:'Alice'
+                  }}
+                  validateMessages={validateMessages}
             >
                 <Form.Item
                     label="学号"
                     name='sNo'
                     hasFeedback
                     rules={[
-                        { required: true, message: '请输入学号' }
+                        { required: true }
                     ]}
                 >
                     <Input />
@@ -30,8 +45,9 @@ export default function index() {
                 <Form.Item
                     label="姓名"
                     name='name'
+                    hasFeedback
                     rules={[
-                        { required: true, message: '请输入姓名' }
+                        { required: true}
                     ]}
                 >
                     <Input />
@@ -41,8 +57,9 @@ export default function index() {
                 <Form.Item
                     label='性别'
                     name='sex'
+                    hasFeedback
                     rules={[
-                        { required: true, message: '请选择性别' }
+                        { required: true,type:'radio'}
                     ]}
                 >
                     <Radio.Group>
@@ -55,8 +72,9 @@ export default function index() {
                 <Form.Item
                     label="出生日期"
                     name='birth'
+                    hasFeedback
                     rules={[
-                        { required: true, messag: '请选择出生日期' }
+                        { required: true, message: '请选择出生日期' }
                     ]}
                 >
                     <Select
@@ -70,8 +88,9 @@ export default function index() {
                 <Form.Item
                     label='邮箱'
                     name='email'
+                    hasFeedback
                     rules={[
-                        { required: true, messag: '请输入邮箱' }
+                        { required: true,types:'email'}
                     ]}
                 >
                     <Input />
@@ -81,8 +100,9 @@ export default function index() {
                 <Form.Item
                     label='电话'
                     name='phone'
+                    hasFeedback
                     rules={[
-                        { required: true, messag: '请输入电话' }
+                        { required: true,types:'number' }
                     ]}
                 >
                     <Input />
@@ -92,6 +112,7 @@ export default function index() {
                 <Form.Item
                     label='地址'
                     name='address'
+                    hasFeedback
                 >
                     <Input.TextArea></Input.TextArea>
                 </Form.Item>
@@ -100,15 +121,24 @@ export default function index() {
                     label='是否班长'
                     name='isMonitor'
                     valuePropName='checked'
+                    hasFeedback
+                    rules={[
+                        { required: true, message: '请选择' }
+                    ]}
                 >
                     <Switch />
                 </Form.Item>
 
                 <Form.Item
                 >
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary" htmlType="submit"
+                        onClick={e=>{
+                            console.log(form.getFieldsValue());
+                            console.log(form.setFieldsValue(1))
+                        }}
+                    >
                         Submit
-        </Button>
+                    </Button>
                 </Form.Item>
 
             </Form>
