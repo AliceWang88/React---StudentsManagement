@@ -1,11 +1,8 @@
 import React from 'react'
+import AddStudents from '@/components/addStudents'
 
 function add() {
-    return (
-        <div>
-            添加学生
-        </div>
-    )
+    return <AddStudents />
 }
 add.wrappers = ['@/wrappers/homeWrapper.js']
 
