@@ -32,6 +32,16 @@ export default {
             yield put({
                 type:'removeLogin',
             })
+            // 学生搜索条件重置
+            yield put({
+                type:'student/changeCondition',
+                payload:{
+                    key:'',
+                    page:1,
+                    sex:-1,
+                    size:6,
+                }
+            })
             return true;
         }
     },
