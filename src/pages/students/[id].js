@@ -1,9 +1,10 @@
 import React from 'react'
+import Student from '@/components/students/addStudents'
 
 export default function index(props) {
     return (
         <div>
-            修改学生信息页面，id号：{props.match.params.id}
+            <Student sNo={props.match.params.id} />
         </div>
     )
 }

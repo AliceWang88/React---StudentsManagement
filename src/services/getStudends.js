@@ -1,6 +1,46 @@
+import queryString from 'query-string';
+
 const appkey = 'demo13_1545210570249';
 // const appkey2 = 'Alice_1553846205955';
 // const appkey3 = 'Alice88_1564641259747';
+
+// 添加学生
+export async function addStudent(data){
+    data = {
+        appkey,
+        ...data,
+    }
+    const str = queryString.stringify(data);
+    return await fetch(`/api/student/addStudent?${str}`)
+        .then(resp => resp.json())
+}
+
+// 修改学生信息
+export async function modifyStudentInfo(data){
+    data = {
+        appkey,
+        ...data,
+    }
+    const str = queryString.stringify(data);
+    return await fetch(`/api/student/updateStudent?${str}`)
+        .then(resp => resp.json())
+}
+
+// 删除学生
+export async function deleteStudent(sNo) {
+    return await fetch(`/api/student/delBySno?appkey=${appkey}&sNo=${sNo}`)
+        .then(resp=>resp.json())
+}
+
+// 根据学号，获取学生信息
+export async function getInfoBySNo (sNo) {
+    const data = await getStudent();
+    for (const obj of data) {
+        if(obj.sNo === sNo){
+            return obj;
+        }
+    }
+}
 
 // 按页获取学生信息
 export async function getStudentByPage(page, size) {

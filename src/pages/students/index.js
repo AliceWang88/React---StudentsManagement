@@ -4,7 +4,7 @@ import SearBar from '../../container/StudentSearchBarContainer'
 
 function Home() {
     return (
-        <div>
+        <div style={{padding:30}}>
             <SearBar />
             <StudentList />
         </div>

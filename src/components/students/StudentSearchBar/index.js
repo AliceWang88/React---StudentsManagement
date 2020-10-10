@@ -44,10 +44,10 @@ export default class StudentSearchBar extends Component {
                     </Col>
 
                  性别：
-                 <Radio.Group defaultValue='-1' onChange={this.handleRadioChange}>
-                        <Radio.Button value='-1' checked={this.state.sex === -1}>不限</Radio.Button>
-                        <Radio.Button value='0' checked={this.state.sex === 0}>男</Radio.Button>
-                        <Radio.Button value='1' checked={this.state.sex === 1}>女</Radio.Button>
+                 <Radio.Group defaultValue={this.state.sex} onChange={this.handleRadioChange}>
+                        <Radio.Button value={-1} checked={this.state.sex === -1}>不限</Radio.Button>
+                        <Radio.Button value={0} checked={this.state.sex === 0}>男</Radio.Button>
+                        <Radio.Button value={1} checked={this.state.sex === 1}>女</Radio.Button>
                     </Radio.Group>
                     <Button
                         type="primary"

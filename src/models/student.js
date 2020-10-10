@@ -67,9 +67,20 @@ export default {
     subscriptions: {
         onListen({ dispatch, history }) {
             history.listen((location) => {
-                    if (location.pathname === '/students') {
+                if (location.pathname === '/students') {
                     // 拿到地址栏参数，申请更改数据
                     const queryObj = location.query;
+                    
+                    // 重新获取数据
+                    if (JSON.stringify(queryObj) === '{}') {
+                        // 重新请求数据，设置数据
+                        dispatch({
+                            type: 'fetchStudents',
+                        })
+                        return;
+                    }
+
+                    // 根据地址栏参数，改变条件数据，然后重新请求数据
                     queryObj.page && (queryObj.page = +queryObj.page);
                     queryObj.sex && (queryObj.sex = +queryObj.sex);
                     queryObj.size && (queryObj.size = +queryObj.size);

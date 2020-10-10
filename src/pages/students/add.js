@@ -1,5 +1,5 @@
 import React from 'react'
-import AddStudents from '@/components/addStudents'
+import AddStudents from '@/components/students/addStudents'
 
 function add() {
     return <AddStudents />

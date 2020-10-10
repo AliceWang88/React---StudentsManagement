@@ -2,7 +2,7 @@ import React from 'react'
 
 function Home() {
     return (
-        <div>
+        <div style={{padding:30}}>
             首页
         </div>
     )
